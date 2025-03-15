@@ -188,7 +188,7 @@ const NavBarComponent = () => {
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                <Label className="ml-4">{userInfo?.fullName}</Label>
+                <Label className="ml-4">{userInfo?.username}</Label>
               </SignedIn>
 
               <DropdownMenu>
