@@ -37,9 +37,8 @@ const OtherUserProfileCompo = ({ userId }: { userId: any }) => {
   const getUserInfo = async () => {
     try {
       const userInfos = await getPostByUserId(userId);
-      console.log(userInfos);
+
       if (userInfos.data) {
-        console.log(userInfos.data);
         setUserInfo(userInfos.data);
       }
     } finally {
@@ -90,8 +89,7 @@ const OtherUserProfileCompo = ({ userId }: { userId: any }) => {
         "New_Follower",
         userInfo.email
       );
-      console.log("follower notification");
-      console.log(noti);
+
       // Toggle the follow status immediately for UI feedback
       setAlreadyFollowed(true);
       // Then verify with the server
@@ -146,7 +144,7 @@ const OtherUserProfileCompo = ({ userId }: { userId: any }) => {
     if (userId) {
       try {
         const posts = await GetAllPostsForSpeacilUser(userId);
-        console.log(posts);
+
         if (posts.data) {
           setPostsData(posts.data || []);
         }
@@ -174,8 +172,7 @@ const OtherUserProfileCompo = ({ userId }: { userId: any }) => {
       });
     }
   }, [userInfo]);
-  console.log("user info");
-  console.log(userInfo);
+
   const [loading, setLoading] = useState(true);
 
   return (

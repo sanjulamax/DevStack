@@ -129,8 +129,7 @@ const Iterator = ({
         "New_Follower",
         post.authorEmail
       );
-      console.log("follower notification");
-      console.log(noti);
+
       // Toggle the follow status immediately for UI feedback
       setAlreadyFollowed(true);
       // Then verify with the server

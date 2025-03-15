@@ -12,7 +12,6 @@ export const RegisterUser = async (data: z.infer<typeof UserSchema>) => {
     const alreadyExistUser = await findUserByEmail(
       LoggedInUser?.primaryEmailAddress?.emailAddress
     );
-    console.log(alreadyExistUser);
 
     if (!alreadyExistUser.error) {
       const updatedUser = await UpdateUser(validData.data);
@@ -54,7 +53,7 @@ export const UpdateUser = async (data: z.infer<typeof UserSchema>) => {
       if (!existInfo) {
         return { error: true };
       }
-      console.log(existInfo);
+
       const updatedUser = await prisma.user.update({
         where: {
           email: LoggedInUser?.primaryEmailAddress?.emailAddress || "",
@@ -146,10 +145,8 @@ export const getUserInfoFromDbWithEmail = async (email: any) => {
 
 export const registerUserAuto = async (email: any, userInfo: any) => {
   try {
-    console.log(userInfo);
     const alreadyExistUser = await getUserInfoFromDbWithEmail(email);
-    console.log("Already Exist User Data");
-    console.log(alreadyExistUser);
+
     if (!(alreadyExistUser.data == null)) {
       return { alredyUserSuccess: true };
     } else {
@@ -346,8 +343,7 @@ export const fetchFollwers = async (email: any) => {
 
 export const getFollwingUsersPosts = async (email: any) => {
   const followers = await getFollowersOfUser(email);
-  console.log("followers data");
-  console.log(followers);
+
   if (followers.error) {
     return {
       error: true,

@@ -50,8 +50,7 @@ const NotificationComp = () => {
       getUserNotifications();
     }
   }, [isLoaded, user]);
-  console.log("notificationdata");
-  console.log(notificationData);
+
   return (
     <div>
       <SignedIn>

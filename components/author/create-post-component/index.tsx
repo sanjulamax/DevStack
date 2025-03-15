@@ -54,8 +54,6 @@ const CreatePostComponent = () => {
     {
       user &&
         startTransition(async () => {
-          console.log(data);
-
           await CreatePost(data);
           toast("You Topic Now Online");
           setMediaUrl(null);
@@ -68,7 +66,6 @@ const CreatePostComponent = () => {
   const imageUploadHandler = (data: any) => {
     form.setValue("media", data.info.secure_url);
     setMediaUrl(data.info.secure_url);
-    console.log(data.info.secure_url);
   };
 
   const [authorEmail, setAuthorEmail] = useState<string | null>(null);
@@ -80,7 +77,6 @@ const CreatePostComponent = () => {
 
   useEffect(() => {
     form.setValue("authorEmail", authorEmail);
-    console.log("author email");
   }, [authorEmail]);
 
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);

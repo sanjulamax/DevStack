@@ -27,14 +27,12 @@ const QuestionViewCompo = ({ id }: { id: any }) => {
   useEffect(() => {
     getPost().then((postDetails) => setPost(postDetails.post));
   }, [id]);
-  console.log(post);
 
   const getFollwedUsers = async () => {
     const follwed = await getFollwers(
       user?.primaryEmailAddress?.emailAddress,
       post?.authorEmail
     );
-    console.log(follwed.data);
   };
 
   useEffect(() => {

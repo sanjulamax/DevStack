@@ -62,14 +62,12 @@ const IteratorUserProfile = ({ post, index }: { post: any; index: any }) => {
       (item: any) =>
         item.email === currentUser?.primaryEmailAddress?.emailAddress
     );
-    console.log("vt one");
-    console.log(votedOne);
+
     const votedTwo = post.downVotesUser.find(
       (item: any) =>
         item.email === currentUser?.primaryEmailAddress?.emailAddress
     );
-    console.log("vt two");
-    console.log(votedTwo);
+
     if (votedOne) {
       setAlreadyUpVotedstat(true);
       setShowSensitive(true);
@@ -131,7 +129,6 @@ const IteratorUserProfile = ({ post, index }: { post: any; index: any }) => {
                         aria-label="Delete Post"
                         disabled={isPending}
                         onClick={async () => {
-                          console.log(post.id);
                           startTransition(async () => {
                             const deleteRespons = await deletePost(post.id);
                             if (deleteRespons.error) {

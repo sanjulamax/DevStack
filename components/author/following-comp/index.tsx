@@ -44,7 +44,6 @@ const FollowingCompo = () => {
         user?.primaryEmailAddress?.emailAddress
       );
       if (follwings) {
-        console.log(follwings.data);
         setFollwingData(follwings.data || []);
       }
     }
@@ -68,8 +67,6 @@ const FollowingCompo = () => {
   useEffect(() => {
     getFollowings();
   }, [user, isLoaded]);
-
-  console.log(follwingData);
 
   // Filter following users based on search query
   const filteredFollowing = follwingData?.filter((followingUser: any) =>

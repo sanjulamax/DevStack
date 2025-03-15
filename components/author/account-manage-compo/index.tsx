@@ -54,14 +54,12 @@ const AccountManageCompo = () => {
     setDataLoaded(true);
   };
 
-  useEffect(() => {
-    console.log(existUserData);
-  }, [userExist]);
+  useEffect(() => {}, [userExist]);
 
   useEffect(() => {
     if (isLoaded) {
       setUserInfo(user);
-      console.log(user);
+
       if (user?.primaryEmailAddress?.emailAddress) {
         existUser(user.primaryEmailAddress.emailAddress);
       } else {
@@ -91,7 +89,7 @@ const AccountManageCompo = () => {
   const submitAction = (data: z.infer<typeof UserSchema>) => {
     startTransition(async () => {
       const submitionAfterCall = await RegisterUser(data);
-      console.log(data);
+
       setReturnMsg(submitionAfterCall);
       form.reset();
       setImageUrl("");
@@ -140,7 +138,7 @@ const AccountManageCompo = () => {
                   ) : dataLoaded ? (
                     existUserData?.profilePicture ? (
                       (console.log("this is dp url"),
-                      console.log(existUserData?.profilePicture),
+                      console.log(""),
                       (
                         <div className="relative w-64 h-64 rounded-full overflow-hidden ring-4 ring-offset-4 ring-purple-400 ring-offset-white transition-all duration-300 shadow-lg hover:shadow-2xl">
                           <Image
@@ -188,11 +186,8 @@ const AccountManageCompo = () => {
                   }}
                   onSuccess={(data) => {
                     imageUploadHandler(data);
-                    console.log(data);
                   }}
-                  onCloseAction={(data) => {
-                    console.log(data);
-                  }}
+                  onCloseAction={(data) => {}}
                 >
                   {({ open }) => {
                     return (

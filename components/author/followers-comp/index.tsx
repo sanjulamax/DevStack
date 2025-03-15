@@ -43,7 +43,6 @@ const FollowersComp = () => {
         user?.primaryEmailAddress?.emailAddress
       );
       if (follwings) {
-        console.log(follwings.data);
         setFollwingData(follwings.data || []);
       }
     }
@@ -53,15 +52,11 @@ const FollowersComp = () => {
   const unFollowFuc = async (followingUserEmail: any) => {
     setIsRemoving(followingUserEmail);
     if (user) {
-      console.log("data inserted to function");
-      console.log(user?.primaryEmailAddress?.emailAddress);
-      console.log(followingUserEmail);
       const unFollow = await removeFollwers(
         user?.primaryEmailAddress?.emailAddress,
         followingUserEmail
       );
       if (unFollow.success) {
-        console.log(unFollow.data);
         window.location.reload();
       }
       setIsRemoving(null);

@@ -58,9 +58,7 @@ const NavBarComponent = () => {
       existUser(user?.primaryEmailAddress?.emailAddress);
     }
   }, [isLoaded, user]);
-  console.log("existUserData");
 
-  console.log(existUserData);
   return (
     <nav className="bg-slate-200 dark:bg-gray-900 shadow fixed top-0 left-0 right-0 z-50 h-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

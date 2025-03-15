@@ -24,8 +24,6 @@ const UserProfileNormalComp = () => {
     }
   }, [isLoaded, user]);
 
-  console.log(posts);
-  console.log(postLoaded);
   return <div></div>;
 };
 

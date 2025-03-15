@@ -88,7 +88,7 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
   const submitHandler = async (data: z.infer<typeof ReplySchema>) => {
     startTransition(async () => {
       const replyAdder = await AddReplys(data);
-      console.log(replyAdder);
+
       form.reset();
       window.location.reload();
 
@@ -98,7 +98,6 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
         "add_reply",
         userDetails.author.email
       );
-      console.log(noti.data);
     });
   };
 

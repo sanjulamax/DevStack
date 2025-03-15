@@ -333,7 +333,6 @@ export const searchFunction = async (searchString: any) => {
       },
     });
     if (titlePost.length > 0) {
-      console.log("founded from title");
       return {
         success: true,
         data: titlePost,
@@ -354,7 +353,7 @@ export const searchFunction = async (searchString: any) => {
           downVotesUser: true,
         },
       });
-      console.log("founded from content");
+
       return {
         success: true,
         data: contentPost,
@@ -376,7 +375,7 @@ export const searchFunction = async (searchString: any) => {
           downVotesUser: true,
         },
       });
-      console.log("founded from user");
+
       return {
         success: true,
         data: userPost,
@@ -396,7 +395,7 @@ export const searchFunction = async (searchString: any) => {
           downVotesUser: true,
         },
       });
-      console.log("founded from category");
+
       return {
         success: true,
         data: categoryPosts,

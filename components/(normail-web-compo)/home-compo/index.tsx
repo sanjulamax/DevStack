@@ -108,15 +108,10 @@ const HomeComponent = () => {
     };
     const registeruser = await registerUserAuto(userInfo, userData);
     if (registeruser.alredyUserSuccess) {
-      console.log("User Already Exist");
     } else if (registeruser.regSuccess) {
-      console.log("User Registered");
     } else if (registeruser.regError) {
-      console.log("User Register Error");
     } else if (registeruser.alreadyUserError) {
-      console.log("User Already Exist Error");
     } else {
-      console.log("Other Error Occured");
     }
   };
 
@@ -216,8 +211,6 @@ const HomeComponent = () => {
     } else {
       setLoading(false);
     }
-    console.log("followers posts");
-    console.log(followersPostData);
   };
 
   const categories = [
