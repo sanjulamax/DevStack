@@ -74,7 +74,7 @@ const AccountManageCompo = () => {
     resolver: zodResolver(UserSchema),
     defaultValues: {
       // Changed from email to userInfo.primaryEmailAddress.emailAddress
-      username: undefined, // Changed from userName to username
+      username: null, // Changed from userName to username
       firstName: null,
       lastName: null,
       role: "USER",
