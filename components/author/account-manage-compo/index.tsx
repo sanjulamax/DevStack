@@ -175,6 +175,15 @@ const AccountManageCompo = () => {
                   uploadPreset={
                     process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
                   }
+                  options={{
+                    sources: [
+                      "local",
+                      "camera",
+                      "dropbox",
+                      "google_drive",
+                      "url",
+                    ],
+                  }}
                   onSuccess={(data) => {
                     imageUploadHandler(data);
                     console.log(data);
