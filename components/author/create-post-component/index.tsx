@@ -170,6 +170,9 @@ const CreatePostComponent = () => {
                                 <SelectItem value="Computer Hardware">
                                   Computer Hardware
                                 </SelectItem>
+                                <SelectItem value="Computer Computing">
+                                  Cloud Computing
+                                </SelectItem>
                                 <SelectItem value="Networkinge">
                                   Networkinge
                                 </SelectItem>
