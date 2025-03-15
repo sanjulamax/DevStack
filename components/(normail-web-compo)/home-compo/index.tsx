@@ -284,7 +284,7 @@ const HomeComponent = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50 dark:from-gray-950 dark:via-indigo-950/30 dark:to-purple-950/30">
+    <div className="min-h-screen pb-10 pt-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50 dark:from-gray-950 dark:via-indigo-950/30 dark:to-purple-950/30">
       <div className="max-w-screen mx-auto">
         {/* Header with search and filters */}
         <div className="w-[100%]   flex justify-center align-middle">

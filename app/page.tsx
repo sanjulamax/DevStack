@@ -4,7 +4,7 @@ import HomeComponent from "@/components/(normail-web-compo)/home-compo";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <HomeComponent></HomeComponent>
     </div>
   );
