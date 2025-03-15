@@ -62,6 +62,7 @@ const CreatePostComponent = () => {
         });
     }
     form.reset();
+    window.location.reload();
   };
 
   const imageUploadHandler = (data: any) => {
