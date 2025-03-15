@@ -218,6 +218,17 @@ const CreatePostComponent = () => {
                   uploadPreset={
                     process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
                   }
+                  options={{
+                    sources: [
+                      "local",
+                      "camera",
+                      "dropbox",
+                      "google_drive",
+                      "url",
+                    ],
+                    multiple: false,
+                    maxFiles: 1,
+                  }}
                   onSuccess={imageUploadHandler}
                 >
                   {({ open }) => (
