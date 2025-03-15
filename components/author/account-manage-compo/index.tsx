@@ -183,6 +183,8 @@ const AccountManageCompo = () => {
                       "google_drive",
                       "url",
                     ],
+                    multiple: false,
+                    maxFiles: 1,
                   }}
                   onSuccess={(data) => {
                     imageUploadHandler(data);
