@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  username String
+
+  firstName      String?
+  lastName       String?
+  role           Role     @default(USER)
+  birthday       String?
+  bio            String?
+  profilePicture String?
+  carierPaths    String   @default("Happy Coder")
+  workingPlace   String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  post           Post[]
+  reply          Reply[]
+
+  upvoted               Post[]          @relation("Upvoted")
+  downvoted             Post[]          @relation("Downvoted")
+  notificationsCreated  Notifications[] @relation("creator")
+  notificationsRecieved Notifications[] @relation("reciever")
+
+  Notifications Notifications[]
+  follower      follow[]        @relation("follower")
+  following     follow[]        @relation("following")
+  follow        follow[]
+
+  creator  Notificationsuser[] @relation("creator")
+  reciever Notificationsuser[] @relation("reciever")
+}
+
+model Post {
+  id          String  @id @default(uuid())
+  title       String
+  content     String
+  authorEmail String?
+  category    String
+  media       String?
+  upVotes     Int     @default(0)
+  downVotes   Int     @default(0)
+
+  upVotesUser   User[] @relation("Upvoted")
+  downVotesUser User[] @relation("Downvoted")
+
+  author        User?           @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  reply         Reply[]
+  Notifications Notifications[]
+}
+
+model Reply {
+  id           String @id @default(uuid())
+  content      String
+  authorEmail  String
+  psotId       String
+  relavantPost Post   @relation(fields: [psotId], references: [id], onDelete: Cascade)
+  author       User   @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+
+  perantId  String?
+  perant    Reply?   @relation("Reply to replies", fields: [perantId], references: [id], onDelete: Cascade)
+  child     Reply[]  @relation("Reply to replies")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notifications {
+  id         String   @id @default(uuid())
+  creatorId  String
+  postId     String
+  type       String
+  recieverId String
+  read       Boolean  @default(false)
+  creator    User     @relation("creator", fields: [creatorId], references: [email], onDelete: Cascade)
+  reciever   User     @relation("reciever", fields: [recieverId], references: [email], onDelete: Cascade)
+  post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  User   User?   @relation(fields: [userId], references: [email])
+  userId String?
+}
+
+model follow {
+  id             String   @id @default(uuid())
+  followerEmail  String
+  followingEmail String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  follower       User     @relation("follower", fields: [followerEmail], references: [email], onDelete: Cascade)
+  following      User     @relation("following", fields: [followingEmail], references: [email], onDelete: Cascade)
+  User           User?    @relation(fields: [userId], references: [id])
+  userId         String?
+}
+
+model Notificationsuser {
+  id        String @id @default(uuid())
+  creatorId String
+
+  type       String
+  recieverId String
+  read       Boolean @default(false)
+  creator    User    @relation("creator", fields: [creatorId], references: [email], onDelete: Cascade)
+  reciever   User    @relation("reciever", fields: [recieverId], references: [email], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
