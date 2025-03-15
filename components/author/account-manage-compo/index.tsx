@@ -107,7 +107,7 @@ const AccountManageCompo = () => {
   return (
     <div>
       <SignedIn>
-        <div className="container mx-auto p-8 max-w-6xl">
+        <div className="container h-screen mx-auto p-8 max-w-6xl">
           <div className="bg-white dark:bg-card dark:border-2 rounded-2xl shadow-xl p-8 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl"></div>
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-pink-400/20 to-yellow-500/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-xl"></div>
