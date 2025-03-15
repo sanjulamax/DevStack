@@ -30,7 +30,9 @@ export default function RootLayout({
           <ClerkProvider>
             <NavBarPage></NavBarPage>
             {children}
+
             <Footer></Footer>
+
             <Toaster />
           </ClerkProvider>
         </ThemeProvider>

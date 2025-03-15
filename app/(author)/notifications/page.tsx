@@ -3,8 +3,8 @@ import React from "react";
 
 const Notifications = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="mt-20 w-[80%] md:w-[60%]  ">
+    <div className="flex h-screen flex-col items-center justify-center">
+      <div className="mt-10 w-[80%] md:w-[60%]  ">
         <NotificationComp></NotificationComp>
       </div>
     </div>

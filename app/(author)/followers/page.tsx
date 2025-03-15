@@ -3,7 +3,7 @@ import React from "react";
 
 const Followers = () => {
   return (
-    <div className="mt-20">
+    <div className="h-screen mt-20">
       <FollowersComp></FollowersComp>
     </div>
   );
