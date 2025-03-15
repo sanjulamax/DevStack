@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -20,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <header></header>
       <body>
         <ThemeProvider
           attribute="class"
@@ -36,6 +38,7 @@ export default function RootLayout({
             <Toaster />
           </ClerkProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-Q524C9FPD8" />
       </body>
     </html>
   );
