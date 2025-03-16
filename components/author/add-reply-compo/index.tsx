@@ -40,6 +40,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
+import { findUserByEmail } from "@/app/actions/user.action";
 
 const AddReplyCompo = ({ postId }: { postId: any }) => {
   const [isPending, startTransition] = useTransition();
@@ -62,10 +63,31 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
   const [replyLoaded, setReplyLoaded] = useState(false);
   const [replyWriterTogle, setReplyWriterTogle] = useState(false);
   const [userDetails, setUserDetails] = useState<any>(null);
+  const [userExist, setUserExist] = useState(false);
+  const [existUserData, setExistUserData] = useState<any>();
+
+  const existUser = async (email: any) => {
+    const existUserConform = await findUserByEmail(email);
+    if (existUserConform.success) {
+      setUserExist(true);
+      setExistUserData(existUserConform.user);
+    } else {
+      setUserExist(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoaded && user) {
+      setUserInfo(user);
+      existUser(user?.primaryEmailAddress?.emailAddress);
+    }
+  }, [isLoaded, user]);
 
   const getUserEmail = async () => {
-    const userDetailsz = await GetPostById(postId);
-    setUserDetails(userDetailsz.data);
+    const userDetails = await GetPostById(postId);
+    if (userDetails.data) {
+      setUserDetails(userDetails.data);
+    }
   };
 
   useEffect(() => {
@@ -114,7 +136,7 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
   }, []);
 
   useEffect(() => {}, [replyLoaded]);
-  console.log(userDetails);
+
   return (
     <div className="flex flex-col items-center w-full max-w-5xl mx-auto space-y-8">
       {/* Discussion Header */}
@@ -156,7 +178,7 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
               variant="outline"
               className="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800"
             >
-              Replying as @{userDetails?.author.username || "Anonymous"}
+              Replying as @{existUserData?.username || "Anonymous"}
             </Badge>
           </div>
 
@@ -383,11 +405,11 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
 
                     {isCurrentUser && (
                       <div className="flex-shrink-0 ml-3">
-                        {userDetails?.author?.profilePicture ? (
+                        {existUserData?.profilePicture ? (
                           <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-indigo-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900">
                             <Image
                               src={
-                                userDetails.author.profilePicture ||
+                                existUserData.profilePicture ||
                                 "/placeholder.svg"
                               }
                               alt="profile"
