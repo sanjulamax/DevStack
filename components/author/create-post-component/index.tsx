@@ -166,10 +166,10 @@ const CreatePostComponent = () => {
                                 <SelectItem value="Computer Hardware">
                                   Computer Hardware
                                 </SelectItem>
-                                <SelectItem value="Computer Computing">
+                                <SelectItem value="Cloud Computing">
                                   Cloud Computing
                                 </SelectItem>
-                                <SelectItem value="Networkinge">
+                                <SelectItem value="Networking">
                                   Networkinge
                                 </SelectItem>
                                 <SelectItem value="Gaming">Gaming</SelectItem>

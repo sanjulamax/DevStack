@@ -286,7 +286,8 @@ const HomeComponent = () => {
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Search Bar */}
-              <div className="w-[300px] lg:w-full md:w-auto flex-1 max-w-2xl relative group">
+
+              <div className="w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl relative group">
                 <div
                   className={`absolute inset-0 bg-indigo-400/20 dark:bg-indigo-600/30 rounded-full blur ${
                     isSearchFocused ? "opacity-100" : "opacity-0"
@@ -294,7 +295,7 @@ const HomeComponent = () => {
                 ></div>
                 <div className="relative">
                   <Search
-                    className={`absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+                    className={`absolute left-2.5 sm:left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 ${
                       isSearchFocused
                         ? "text-indigo-600 dark:text-indigo-400"
                         : "text-muted-foreground"
@@ -304,20 +305,19 @@ const HomeComponent = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search for topics, questions, or keywords..."
-                    className="pl-12 pr-20 py-7 border-2 rounded-full bg-white/90 dark:bg-gray-900/90 focus-visible:ring-indigo-500 focus-visible:border-indigo-500 text-base transition-all duration-300"
+                    className="pl-8 sm:pl-10 pr-14 sm:pr-16 py-5 sm:py-6 border-2 rounded-full bg-white/90 dark:bg-gray-900/90 focus-visible:ring-indigo-500 focus-visible:border-indigo-500 text-sm sm:text-base transition-all duration-300"
                     onKeyDown={(e) => e.key === "Enter" && searchFunc(search)}
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
                   />
                   <Button
                     onClick={() => searchFunc(search)}
-                    className="absolute right-1.5 top-1/2 transform -translate-y-1/2 rounded-full h-10 px-5 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300"
+                    className="absolute right-1 sm:right-1.5 top-1/2 transform -translate-y-1/2 rounded-full h-8 sm:h-10 px-3 sm:px-4 text-xs sm:text-sm bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     Search
                   </Button>
                 </div>
               </div>
-
               <div className="flex items-center gap-3 w-full md:w-auto justify-end">
                 {/* Active Filters Display */}
                 {activeCategory && (
