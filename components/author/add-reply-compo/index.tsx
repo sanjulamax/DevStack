@@ -64,10 +64,8 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
   const [userDetails, setUserDetails] = useState<any>(null);
 
   const getUserEmail = async () => {
-    const userDetails = await GetPostById(postId);
-    if (userDetails.data) {
-      setUserDetails(userDetails.data);
-    }
+    const userDetailsz = await GetPostById(postId);
+    setUserDetails(userDetailsz.data);
   };
 
   useEffect(() => {
@@ -116,7 +114,7 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
   }, []);
 
   useEffect(() => {}, [replyLoaded]);
-
+  console.log(userDetails);
   return (
     <div className="flex flex-col items-center w-full max-w-5xl mx-auto space-y-8">
       {/* Discussion Header */}
@@ -385,10 +383,13 @@ const AddReplyCompo = ({ postId }: { postId: any }) => {
 
                     {isCurrentUser && (
                       <div className="flex-shrink-0 ml-3">
-                        {userInfo?.imageUrl ? (
+                        {userDetails?.author?.profilePicture ? (
                           <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-indigo-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900">
                             <Image
-                              src={userInfo.imageUrl || "/placeholder.svg"}
+                              src={
+                                userDetails.author.profilePicture ||
+                                "/placeholder.svg"
+                              }
                               alt="profile"
                               fill
                               className="object-cover"
